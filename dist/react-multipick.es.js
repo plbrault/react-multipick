@@ -100,10 +100,10 @@ var _templateObject2 = taggedTemplateLiteral(
 );
 var _templateObject3 = taggedTemplateLiteral(
     [
-        '\n    box-sizing: inherit;\n    position: absolute;\n    width: 100%;\n    background: #fff;\n    border: 1px solid #ccc;\n    padding: 10px;\n    margin-top: 10px;\n',
+        '\n    box-sizing: inherit;\n    position: absolute;\n    z-index: 1;\n    width: 100%;\n    background: #fff;\n    border: 1px solid #ccc;\n    padding: 10px;\n    margin-top: 10px;\n',
     ],
     [
-        '\n    box-sizing: inherit;\n    position: absolute;\n    width: 100%;\n    background: #fff;\n    border: 1px solid #ccc;\n    padding: 10px;\n    margin-top: 10px;\n',
+        '\n    box-sizing: inherit;\n    position: absolute;\n    z-index: 1;\n    width: 100%;\n    background: #fff;\n    border: 1px solid #ccc;\n    padding: 10px;\n    margin-top: 10px;\n',
     ]
 );
 var _templateObject4 = taggedTemplateLiteral(

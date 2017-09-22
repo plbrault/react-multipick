@@ -14,6 +14,7 @@ export const Button = styled.button`
 export const Dropdown = styled.div`
     box-sizing: inherit;
     position: absolute;
+    z-index: 1;
     width: 100%;
     background: #fff;
     border: 1px solid #ccc;
@@ -32,9 +33,11 @@ export const DropdownItem = styled.label`
         background: #ddd;
     }
 
-    ${props => props.checked && `
+    ${props =>
+        props.checked &&
+        `
         background: #f9f9f9;
-    `}
+    `};
 `;
 
 export const DropdownActionBar = styled.div`
@@ -43,8 +46,7 @@ export const DropdownActionBar = styled.div`
     margin-bottom: 10px;
 `;
 
-export const DropdownAction = styled.button`
-`;
+export const DropdownAction = styled.button``;
 
 export const DropdownList = styled.div`
     height: 180px;
