@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Button, Checkbox, FormControl } from 'react-bootstrap';
 import styled from 'styled-components';
 
 var classCallCheck = function(instance, Constructor) {
@@ -100,20 +101,20 @@ var _templateObject2 = taggedTemplateLiteral(
 );
 var _templateObject3 = taggedTemplateLiteral(
     [
-        '\n    box-sizing: inherit;\n    position: absolute;\n    z-index: 1;\n    width: 100%;\n    background: #fff;\n    border: 1px solid #ccc;\n    padding: 10px;\n    margin-top: 10px;\n',
+        '\n    box-sizing: inherit;\n    position: absolute;\n    z-index: 10;\n    width: fit-content;\n    background: #fff;\n    border: 1px solid #ccc;\n    padding: 10px;\n    margin-top: 10px;\n',
     ],
     [
-        '\n    box-sizing: inherit;\n    position: absolute;\n    z-index: 1;\n    width: 100%;\n    background: #fff;\n    border: 1px solid #ccc;\n    padding: 10px;\n    margin-top: 10px;\n',
+        '\n    box-sizing: inherit;\n    position: absolute;\n    z-index: 10;\n    width: fit-content;\n    background: #fff;\n    border: 1px solid #ccc;\n    padding: 10px;\n    margin-top: 10px;\n',
     ]
 );
 var _templateObject4 = taggedTemplateLiteral(
     [
         '\n    box-sizing: inherit;\n    width: 100%;\n    display: block;\n    cursor: pointer;\n    padding: 2px 10px;\n\n    &:hover {\n        background: #ddd;\n    }\n\n    ',
-        '\n',
+        ';\n',
     ],
     [
         '\n    box-sizing: inherit;\n    width: 100%;\n    display: block;\n    cursor: pointer;\n    padding: 2px 10px;\n\n    &:hover {\n        background: #ddd;\n    }\n\n    ',
-        '\n',
+        ';\n',
     ]
 );
 var _templateObject5 = taggedTemplateLiteral(
@@ -124,10 +125,13 @@ var _templateObject5 = taggedTemplateLiteral(
         '\n    display: flex;\n    justify-content: space-between;\n    margin-bottom: 10px;\n',
     ]
 );
-var _templateObject6 = taggedTemplateLiteral(['\n'], ['\n']);
+var _templateObject6 = taggedTemplateLiteral(
+    ['\n    margin: 0 10px;\n'],
+    ['\n    margin: 0 10px;\n']
+);
 var _templateObject7 = taggedTemplateLiteral(
-    ['\n    height: 180px;\n    overflow-y: scroll;\n    margin: 0 -10px;\n'],
-    ['\n    height: 180px;\n    overflow-y: scroll;\n    margin: 0 -10px;\n']
+    ['\n    height: 180px;\n    overflow-y: auto;\n    margin: 0 -10px;\n'],
+    ['\n    height: 180px;\n    overflow-y: auto;\n    margin: 0 -10px;\n']
 );
 var _templateObject8 = taggedTemplateLiteral(
     ['\n    width: 100%;\n    margin-bottom: 10px;\n'],
@@ -136,7 +140,7 @@ var _templateObject8 = taggedTemplateLiteral(
 
 var Container = styled.div(_templateObject);
 
-var Button = styled.button(_templateObject2);
+var Button$1 = styled(Button)(_templateObject2);
 
 var Dropdown$1 = styled.div(_templateObject3);
 
@@ -146,11 +150,11 @@ var DropdownItem = styled.label(_templateObject4, function(props) {
 
 var DropdownActionBar = styled.div(_templateObject5);
 
-var DropdownAction = styled.button(_templateObject6);
+var DropdownAction = styled(Button)(_templateObject6);
 
 var DropdownList = styled.div(_templateObject7);
 
-var DropdownSearch = styled.input(_templateObject8);
+var DropdownSearch = styled(FormControl)(_templateObject8);
 
 var MultipickDropdown = (function(_Component) {
     inherits(MultipickDropdown, _Component);
@@ -215,23 +219,26 @@ var MultipickDropdown = (function(_Component) {
                 return React.createElement(
                     DropdownItem,
                     { key: item.value, checked: checked },
-                    React.createElement('input', {
-                        type: 'checkbox',
-                        checked: checked,
-                        onChange: _this.handleItemChange,
-                        value: item.value,
-                    }),
-                    item.label
+                    React.createElement(
+                        Checkbox,
+                        {
+                            checked: checked,
+                            onChange: _this.handleItemChange,
+                            value: item.value,
+                        },
+                        item.label
+                    )
                 );
             }),
             (_this.renderSearch = function() {
                 var _this$props = _this.props,
+                    autofocusSearch = _this$props.autofocusSearch,
                     searchValue = _this$props.searchValue,
                     searchPlaceholder = _this$props.searchPlaceholder;
 
                 return React.createElement(DropdownSearch, {
                     type: 'search',
-                    autoFocus: true,
+                    autoFocus: autofocusSearch,
                     value: searchValue,
                     onChange: _this.handleSearchChange,
                     placeholder: searchPlaceholder,
@@ -262,12 +269,12 @@ var MultipickDropdown = (function(_Component) {
                         null,
                         React.createElement(
                             DropdownAction,
-                            { type: 'button', onClick: this.selectAll },
+                            { bsStyle: 'primary', onClick: this.selectAll },
                             selectAllText
                         ),
                         React.createElement(
                             DropdownAction,
-                            { type: 'button', onClick: this.selectNone },
+                            { bsStyle: 'default', onClick: this.selectNone },
                             selectNoneText
                         )
                     ),
@@ -292,10 +299,20 @@ MultipickDropdown.propTypes = {
     searchValue: PropTypes.string.isRequired,
     onSearchChange: PropTypes.func.isRequired,
     searchPlaceholder: PropTypes.string,
+    autofocusSearch: PropTypes.bool,
+    selectAllText: PropTypes.string,
+    selectNoneText: PropTypes.string,
 };
 MultipickDropdown.defaultProps = {
     searchValue: '',
 };
+
+var link = document.createElement('link');
+link.href =
+    'https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css';
+link.type = 'text/css';
+link.rel = 'stylesheet';
+document.getElementsByTagName('head')[0].appendChild(link);
 
 var Multipick = (function(_Component) {
     inherits(Multipick, _Component);
@@ -399,9 +416,9 @@ var Multipick = (function(_Component) {
                     Container,
                     null,
                     React.createElement(
-                        Button,
+                        Button$1,
                         {
-                            type: 'button',
+                            bsStyle: 'primary',
                             onClick: this.handleToggle,
                             disabled: this.props.disabled,
                         },
