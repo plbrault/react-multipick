@@ -26,7 +26,8 @@
     ]
   },
   "dependencies": {
-    "prop-types": "^15.5.10"
+    "prop-types": "^15.5.10",
+    "react-bootstrap": "^0.31.3"
   },
   "engines": {
     "node": ">=4"

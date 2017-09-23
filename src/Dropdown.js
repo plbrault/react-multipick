@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Checkbox } from 'react-bootstrap';
 
 import {
     Dropdown,
@@ -20,6 +21,9 @@ export default class MultipickDropdown extends Component {
         searchValue: PropTypes.string.isRequired,
         onSearchChange: PropTypes.func.isRequired,
         searchPlaceholder: PropTypes.string,
+        autofocusSearch: PropTypes.bool,
+        selectAllText: PropTypes.string,
+        selectNoneText: PropTypes.string,
     };
 
     static defaultProps = {
@@ -57,23 +61,23 @@ export default class MultipickDropdown extends Component {
         const checked = this.props.values.indexOf(item.value) >= 0;
         return (
             <DropdownItem key={item.value} checked={checked}>
-                <input
-                    type="checkbox"
+                <Checkbox
                     checked={checked}
                     onChange={this.handleItemChange}
                     value={item.value}
-                />
-                {item.label}
+                >
+                    {item.label}
+                </Checkbox>
             </DropdownItem>
         );
     };
 
     renderSearch = () => {
-        const { searchValue, searchPlaceholder } = this.props;
+        const { autofocusSearch, searchValue, searchPlaceholder } = this.props;
         return (
             <DropdownSearch
                 type="search"
-                autoFocus
+                autoFocus={autofocusSearch}
                 value={searchValue}
                 onChange={this.handleSearchChange}
                 placeholder={searchPlaceholder}
@@ -94,10 +98,10 @@ export default class MultipickDropdown extends Component {
                     ? this.renderSearch()
                     : null}
                 <DropdownActionBar>
-                    <DropdownAction type="button" onClick={this.selectAll}>
+                    <DropdownAction bsStyle="primary" onClick={this.selectAll}>
                         {selectAllText}
                     </DropdownAction>
-                    <DropdownAction type="button" onClick={this.selectNone}>
+                    <DropdownAction bsStyle="default" onClick={this.selectNone}>
                         {selectNoneText}
                     </DropdownAction>
                 </DropdownActionBar>

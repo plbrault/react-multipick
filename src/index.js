@@ -4,6 +4,13 @@ import PropTypes from 'prop-types';
 import Dropdown from './Dropdown';
 import { Container, Button } from './styles';
 
+const link = document.createElement('link');
+link.href =
+    'https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css';
+link.type = 'text/css';
+link.rel = 'stylesheet';
+document.getElementsByTagName('head')[0].appendChild(link);
+
 export default class Multipick extends Component {
     static propTypes = {
         data: PropTypes.arrayOf(
@@ -93,7 +100,7 @@ export default class Multipick extends Component {
         return (
             <Container>
                 <Button
-                    type="button"
+                    bsStyle="primary"
                     onClick={this.handleToggle}
                     disabled={this.props.disabled}
                 >

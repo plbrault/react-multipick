@@ -46,7 +46,7 @@ storiesOf('Multipick', module)
             render() {
                 return (
                     <Multipick
-                        data={SOME_DATA}
+                        data={MORE_DATA}
                         values={this.state.values}
                         onChange={this.handleChange}
                     />

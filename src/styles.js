@@ -1,3 +1,4 @@
+import { Button as bsButton, FormControl } from 'react-bootstrap';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -6,7 +7,7 @@ export const Container = styled.div`
     box-sizing: border-box;
 `;
 
-export const Button = styled.button`
+export const Button = styled(bsButton)`
     width: 100%;
     box-sizing: inherit;
 `;
@@ -14,8 +15,8 @@ export const Button = styled.button`
 export const Dropdown = styled.div`
     box-sizing: inherit;
     position: absolute;
-    z-index: 1;
-    width: 100%;
+    z-index: 10;
+    width: fit-content;
     background: #fff;
     border: 1px solid #ccc;
     padding: 10px;
@@ -46,15 +47,17 @@ export const DropdownActionBar = styled.div`
     margin-bottom: 10px;
 `;
 
-export const DropdownAction = styled.button``;
+export const DropdownAction = styled(bsButton)`
+    margin: 0 10px;
+`;
 
 export const DropdownList = styled.div`
     height: 180px;
-    overflow-y: scroll;
+    overflow-y: auto;
     margin: 0 -10px;
 `;
 
-export const DropdownSearch = styled.input`
+export const DropdownSearch = styled(FormControl)`
     width: 100%;
     margin-bottom: 10px;
 `;
