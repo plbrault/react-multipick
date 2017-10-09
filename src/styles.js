@@ -15,7 +15,7 @@ export const Button = styled(bsButton)`
 export const Dropdown = styled.div`
     box-sizing: inherit;
     position: absolute;
-    z-index: 10;
+    z-index: 1000000;
     width: fit-content;
     background: #fff;
     border: 1px solid #ccc;
